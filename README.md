@@ -1,24 +1,11 @@
-# README
+# TODO Rails App (Backend part)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repo is to practice:
+- Ruby
+- Ruby On Rails
+- PostgreSQL
+- GraphQL
+- JWT
+- TDD
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Also, this is the backend side of the project, I will try to build an ReactJS Frontend App.
