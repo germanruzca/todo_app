@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-module Mutations
+module Mutationsz
   module Tasks
     RSpec.describe "CreateTask", type: :request do
       describe '.resolve' do
