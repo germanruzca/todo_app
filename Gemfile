@@ -11,6 +11,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'graphql'
 gem 'jwt'
+gem "interactor", "~> 3.0"
 
 
 group :development, :test do
