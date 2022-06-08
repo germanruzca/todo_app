@@ -1,17 +1,17 @@
-require_relative '../types/register_user_type'
-
-class Mutations::RegisterUser < Mutations::BaseMutation
+class Mutations::User::CreateUser < Mutations::BaseMutation
+  argument :username, String, required: true
   argument :email, String, required: true
   argument :password, String, required: true
-  argument :password_confirmation, String, required: true
   argument :first_name, String, required: true
   argument :last_name, String, required: true
-  argument :username, String, required: true
 
-  type Types::Payloads::RegisterUserType
+  field :user, Types::UserType, null: true
+  field :errors, [String], null: false
+  field :success, Boolean, null: false
 
   def resolve(**kwargs)
     user = User.new(kwargs)
+
     if user.save
       {
         success: true,

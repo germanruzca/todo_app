@@ -1,4 +1,4 @@
-class Mutations::CreateTask < Mutations::BaseMutation
+class Mutations::Task::CreateTask < Mutations::BaseMutation
   argument :title, String, required: true
   argument :body, String, required: true
   argument :status, Integer, required: true

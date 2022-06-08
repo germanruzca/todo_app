@@ -1,4 +1,4 @@
-class Mutations::DestroyUser < Mutations::BaseMutation
+class Mutations::User::DestroyUser < Mutations::BaseMutation
   description 'Destroy the User'
   argument :id, ID, required: true
 

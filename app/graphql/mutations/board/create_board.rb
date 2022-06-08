@@ -1,4 +1,4 @@
-class Mutations::CreateBoard < Mutations::BaseMutation
+class Mutations::Board::CreateBoard < Mutations::BaseMutation
   argument :name, String, required: true
   argument :description, String, required: false
   argument :user_id, ID, required: true

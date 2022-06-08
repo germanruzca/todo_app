@@ -1,6 +1,6 @@
 module Queries
   class Tasks < BaseQuery
-    description "Returns all tasks"
+    description "Returns all task"
 
     type [Types::TaskType], null: false
 
