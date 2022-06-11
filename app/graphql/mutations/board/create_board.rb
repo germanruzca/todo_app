@@ -1,7 +1,6 @@
 class Mutations::Board::CreateBoard < Mutations::BaseMutation
   argument :name, String, required: true
   argument :description, String, required: false
-  argument :user_id, ID, required: true
 
 
   field :board, Types::BoardType, null: true
@@ -10,6 +9,10 @@ class Mutations::Board::CreateBoard < Mutations::BaseMutation
 
   def resolve(**kwargs)
     board = Board.new(kwargs)
+    current_user = context[:current_user]
+    puts current_user
+    board.user_id = current_user.id
+
     if board.save
       {
         success: true,

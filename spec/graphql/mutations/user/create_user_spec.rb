@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module Mutations
-  module Users
+  module User
     describe 'CreateUser', type: :request do
       describe '.resolve' do
         it 'should creates a user' do

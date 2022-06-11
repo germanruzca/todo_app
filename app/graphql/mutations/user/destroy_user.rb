@@ -1,13 +1,12 @@
 class Mutations::User::DestroyUser < Mutations::BaseMutation
   description 'Destroy the User'
-  argument :id, ID, required: true
 
   field :errors, [String], null: false
   field :success, Boolean, null: false
 
-  def resolve(id:)
-    user = User.find_by_id(id)
-    puts User.count
+  def resolve
+    current_user = context[:current_user]
+    user = User.find(current_user.id)
 
     if user.destroy
       {

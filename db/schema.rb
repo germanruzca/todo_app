@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_29_230730) do
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
-  create_table "task", force: :cascade do |t|
+  create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.integer "status"
@@ -45,5 +45,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_29_230730) do
   end
 
   add_foreign_key "boards", "users"
-  add_foreign_key "task", "boards"
+  add_foreign_key "tasks", "boards"
 end

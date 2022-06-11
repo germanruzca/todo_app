@@ -6,17 +6,30 @@ class Mutations::User::RegisterUser < Mutations::BaseMutation
   argument :password_confirmation, String, required: true
   argument :username, String, required: true
 
-  field :token, String, null: true
   field :user, Types::UserType, null: true
   field :errors, [String], null: false
   field :success, Boolean, null: false
+  field :token, String, null: false
 
   def resolve(**kwargs)
-    result = register_user(kwargs)
-    result.success? ? result : execution_error(message: result.error)
-  end
+    user = User.new(kwargs)
+    user.email = user.email.downcase
 
-  def register_user(params)
-    Users::Register.call(user_params: params)
+    token = JwtHelper.encode_token({user: user.email, user_id: user.id})
+    if user.save
+      {
+        success: true,
+        user: user,
+        token: token,
+        errors: []
+      }
+    else
+      {
+        success: false,
+        user: nil,
+        token: token,
+        errors: user.errors.full_messages
+      }
+    end
   end
 end

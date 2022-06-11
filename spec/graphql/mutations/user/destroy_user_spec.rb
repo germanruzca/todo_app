@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module Mutations
-  module Users
+  module User
     RSpec.describe 'DestroyUser', type: :request do
       describe '.resolver' do
         it 'should remove the user' do

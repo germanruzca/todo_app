@@ -6,11 +6,17 @@ class Mutations::Task::CreateTask < Mutations::BaseMutation
 
 
   field :task, Types::TaskType, null: true
-  field :errors, [String], null: false
+  field :errors, [String], null: true
   field :success, Boolean, null: false
 
   def resolve(**kwargs)
     task = Task.new(kwargs)
+
+    current_user = context[:current_user]
+    puts current_user.id
+
+    return { success: false } if Board.find(kwargs[:board_id]).user_id != current_user.id
+
     if task.save
       {
         success: true,

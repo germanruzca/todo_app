@@ -1,8 +1,6 @@
 class Board < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   has_many :tasks
 
-  def show_taks
-    self.tasks
-  end
+  validates :name, presence: true
 end

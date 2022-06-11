@@ -1,6 +1,6 @@
 module Mutations
-  module Users
-    RSpec.describe "RegisteNewUser", type: :request do
+  module User
+    RSpec.describe "RegisterUser", type: :request do
       describe '.resolver' do
         it 'should regist an user' do
           user = build(:user)

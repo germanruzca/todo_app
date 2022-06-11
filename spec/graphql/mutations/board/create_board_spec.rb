@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 module Mutations
-  module Boards
+  module Board
     describe 'CreateBoard', type: :request do
       describe '.resolve' do
         it 'should creates a board' do
           user = create(:user)
+          puts user.id
           expect do
             post '/graphql', params: { query: query(user.id)}
-          end.to change {Board.count}.by(1)
+          end.to change { Board.count }.by(1)
         end
 
         it 'should return a board' do
