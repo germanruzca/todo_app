@@ -13,6 +13,7 @@ gem 'graphql'
 gem 'jwt'
 gem "interactor", "~> 3.0"
 gem 'dotenv-rails'
+gem 'rack-cors'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
