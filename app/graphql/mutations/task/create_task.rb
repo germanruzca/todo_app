@@ -13,7 +13,6 @@ class Mutations::Task::CreateTask < Mutations::BaseMutation
     task = Task.new(kwargs)
 
     current_user = context[:current_user]
-    puts current_user.id
 
     return { success: false } if Board.find(kwargs[:board_id]).user_id != current_user.id
 
