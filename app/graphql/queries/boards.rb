@@ -5,7 +5,7 @@ module Queries
     type [Types::BoardType], null: false
 
     def resolve
-      ::Board.all
+      ::Board.where(user_id: context[:current_user].id)
     end
   end
 end

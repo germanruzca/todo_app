@@ -1,15 +1,17 @@
-class Mutations::Task::DestroyTask < Mutations::BaseMutation
+class Mutations::Task::UpdateTask < Mutations::BaseMutation
   argument :id, ID, required: true
+  argument :title, String, required: false
+  argument :status, Integer, required: true
 
-  field :task, Types::TaskType, null: true
-  field :errors, [String], null: false
   field :success, Boolean, null: false
+  field :task, Types::TaskType, null: true
+  field :errors, [String], null: true
 
-  def resolve(id:)
+  def resolve(id:, **kwargs)
     task = Task.find(id)
     return { success: false } if Board.find(task.board_id).user_id != context[:current_user].id
 
-    if task.destroy
+    if task.update(kwargs)
       {
        task: task,
        success: true,
@@ -22,6 +24,5 @@ class Mutations::Task::DestroyTask < Mutations::BaseMutation
        errors: task.errors.full_messages
       }
     end
-
   end
 end
