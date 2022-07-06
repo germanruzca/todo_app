@@ -9,5 +9,10 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :tasks, [Types::TaskType], null: false
+    field :tasks_count, Integer, null: false
+
+    def tasks_count
+      object.tasks.count
+    end
   end
 end

@@ -9,14 +9,14 @@ class Mutations::User::RegisterUser < Mutations::BaseMutation
   field :user, Types::UserType, null: true
   field :errors, [String], null: false
   field :success, Boolean, null: false
-  field :token, String, null: false
+  field :token, String, null: true
 
   def resolve(**kwargs)
     user = User.new(kwargs)
     user.email = user.email.downcase
 
-    token = JwtHelper.encode_token({user: user.email, user_id: user.id})
     if user.save
+      token = JwtHelper.encode_token({user: user.email, user_id: user.id})
       {
         success: true,
         user: user,
